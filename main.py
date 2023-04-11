@@ -14,7 +14,6 @@ if __name__ == '__main__':
     json_data = read_json()
 
     for processo in json_data['processos']:
-        print(processo)
         esaj = Esaj1Grau(driver)
         cnj = split_process(processo['numero'])
         if cnj == '802':
@@ -27,9 +26,8 @@ if __name__ == '__main__':
             if search_process(processo['numero'], esaj):
                 continue
             get_data_header(esaj)
-            '''get_partes_processo(esaj)
+            get_partes_processo(esaj)
             get_movimentacoes(esaj)
-            input('acabou')'''
 
             esaj = Esaj2Grau(driver)
 
