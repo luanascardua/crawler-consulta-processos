@@ -36,6 +36,10 @@ def get_data_header(esaj):
     foro = driver.find_element(*esaj.field_foro_processo).text
     vara = driver.find_element(*esaj.field_vara_processo).text
     juiz = driver.find_element(*esaj.field_juiz_processo).text
+    area = driver.execute_script(
+        f"return document.getElementById('{esaj.field_area_processo}').innerHTML"
+    )
+    area = format_html_string(area)
     try:
         valor = driver.execute_script(
             f"return document.getElementById('{esaj.field_valor_acao}').innerHTML"
@@ -49,7 +53,7 @@ def get_data_header(esaj):
         print('Valor da ação não informado')
         valor = None
 
-    return dict_header_data(classe, assunto, foro, vara, juiz, valor)
+    return dict_header_data(classe, assunto, foro, vara, juiz, area, valor)
 
 
 def get_partes_processo(esaj):

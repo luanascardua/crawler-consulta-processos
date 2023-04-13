@@ -25,7 +25,7 @@ def start_crawler(process_number):
     for url in urls:
         driver.get(url)
         if search_process(process_number, esaj):
-            write_json({'retorno':'processo não encontrado'})
+            list_dict.append({f"{instancia}Grau":'processo não encontrado'})
             esaj = Esaj2Grau(driver)
             instancia = 2
             continue

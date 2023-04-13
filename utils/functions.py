@@ -22,7 +22,7 @@ def convert_to_float(string: str):
     return number
 
 
-def dict_header_data(classe, assunto, foro, vara, juiz, valor):
+def dict_header_data(classe, assunto, foro, vara, juiz, area, valor):
     dict_dados_principais = {
         'dados processuais': {
             'classe': classe,
@@ -30,6 +30,7 @@ def dict_header_data(classe, assunto, foro, vara, juiz, valor):
             'foro': foro,
             'vara': vara,
             'juiz': juiz,
+            'area': area,
             'valor': valor
         }
     }
