@@ -16,6 +16,7 @@ class Esaj1Grau:
         self.field_foro_processo = By.ID, 'foroProcesso'
         self.field_vara_processo = By.ID, 'varaProcesso'
         self.field_juiz_processo = By.ID, 'juizProcesso'
+        self.field_area_processo = "areaProcesso"
         self.field_valor_acao = "valorAcaoProcesso"
 
         self.table_partes_tipo = By.XPATH, '//table[@id="tablePartesPrincipais"]//td[@class="label"]'
@@ -43,6 +44,7 @@ class Esaj2Grau:
         self.field_foro_processo = By.XPATH, '/html/body/div[2]/table[3]/tbody/tr/td[2]'
         self.field_vara_processo = By.XPATH, '/html/body/div[2]/table[3]/tbody/tr/td[3]'
         self.field_juiz_processo = By.XPATH, '/html/body/div[2]/table[3]/tbody/tr/td[4]'
+        self.field_area_processo = "areaProcesso"
         self.field_valor_acao = "valorAcaoProcesso"
 
         self.table_partes_tipo = By.XPATH, '//table[@id="tablePartesPrincipais"]//td[@class="label"]'
