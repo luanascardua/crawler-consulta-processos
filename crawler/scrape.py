@@ -1,10 +1,16 @@
 
 from selenium.common.exceptions import JavascriptException, NoSuchElementException
 import time
-import json
 
-from utils.functions import format_html_string, convert_to_float, dict_header_data, dict_movimentacoes, format_dict_movimentacoes, dict_partes
 from crawler.webdriver import driver
+from utils.functions import (
+    format_html_string, 
+    convert_to_float, 
+    dict_header_data, 
+    dict_movimentacoes, 
+    format_dict_movimentacoes, 
+    dict_partes
+)
 
 
 def search_process(n_process, esaj):
@@ -43,7 +49,7 @@ def get_data_header(esaj):
         print('Valor da ação não informado')
         valor = None
 
-    dict_header_data(classe, assunto, foro, vara, juiz, valor)
+    return dict_header_data(classe, assunto, foro, vara, juiz, valor)
 
 
 def get_partes_processo(esaj):
@@ -55,9 +61,10 @@ def get_partes_processo(esaj):
         key = key.text.strip()
         list_dict.append(dict_partes(key, value))
 
+    return list_dict
+
 
 def get_movimentacoes(esaj):
-    # driver.find_element('aa')
     list_dict = []
     for data, descricao in zip(
         driver.find_elements(*esaj.table_movimentacoes_data),
@@ -68,7 +75,5 @@ def get_movimentacoes(esaj):
         descricao = format_html_string(html_string)
 
         list_dict.append(dict_movimentacoes(data, descricao))
-    
-    format_dict_movimentacoes(list_dict)
-    with open("movimentacoes.json", "w", encoding="utf-8") as json_file:
-        json.dump(list_dict, json_file, ensure_ascii=False)
+        
+    return format_dict_movimentacoes(list_dict)

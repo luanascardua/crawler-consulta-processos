@@ -3,22 +3,10 @@ import json
 
 
 def split_process(process_number: str):
-    '''number = process_number.rsplit('.', 1)
-    process_number = number[0].rsplit('.', 2)[0]
-    process_origin = number[1]'''
     number = process_number.split('.')
     cnj = f'{number[2]}{number[3]}'
 
     return cnj
-
-
-def format(text: str):
-    #text = re.sub('\n', '', text)
-    partes_processo = text.split('\n')
-    nome_parte = partes_processo[0]
-    advogado = partes_processo[1].replace('Advogado: ', '')
-
-    return nome_parte, advogado
 
 
 def format_html_string(html_string: str):
@@ -32,13 +20,6 @@ def convert_to_float(string: str):
     string = string.replace('.', '').replace(',', '.').replace('R$', '').strip()
     number = float(string)
     return number
-
-
-def read_json():
-    with open('processos.json') as f:
-        json_data = json.load(f)
-
-    return json_data
 
 
 def dict_header_data(classe, assunto, foro, vara, juiz, valor):
@@ -103,3 +84,33 @@ def format_dict_movimentacoes(original_list):
                     new_descricao[key] = value
             item["descricao"] = new_descricao
         new_list.append(item)
+
+    return new_list
+
+
+def write_json(data):
+    with open("content.json", "w", encoding="utf-8") as json_file:
+        json.dump(data, json_file, ensure_ascii=False)
+
+
+def create_dict(process_number, UF, dados_crawler):
+    dict = {
+        'processo': {
+            'numero': process_number,
+            'UF': UF
+        },
+        'dadosProcessuais': dados_crawler
+    }
+
+    return dict
+
+
+def dict_dados_coletados(instancia, dados_principais, partes_processo, movimentacoes):
+    dict = {
+        f'{instancia}Grau': {
+            'dadosPrincipais': dados_principais,
+            'partesProcesso': partes_processo,
+            'movimentacoes': movimentacoes
+        }
+    }
+    return dict
