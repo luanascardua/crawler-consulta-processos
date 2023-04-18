@@ -51,7 +51,7 @@ pip install -r requiriments.txt
 
 *na raiz do projeto executar o comando:*
 ``` 
-python main.py
+python app.py
 ```
 
 ## Execute
@@ -101,20 +101,8 @@ exit()
 
 > Exemplos de processos:
 ``` python
-{
-    "processos":[
-        {
-            "numero":"0710802-55.2018.8.02.0001"
-        },
-        {
-            "numero":"0727328-63.2019.8.02.0001"
-        },
-        {
-            "numero":"0213467-51.2022.8.06.0001"
-        },
-        {
-            "numero":"0008002-09.2016.8.06.0081"
-        }
-    ]
-}
+{"numero":"0710802-55.2018.8.02.0001"},
+{"numero":"0727328-63.2019.8.02.0001"},
+{"numero":"0213467-51.2022.8.06.0001"},
+{"numero":"0008002-09.2016.8.06.0081"}
 ```
