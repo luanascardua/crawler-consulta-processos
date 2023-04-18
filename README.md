@@ -42,7 +42,7 @@ Ao final do processo é retornado um json com as informações coletadas.
 3. run app
 
 ```
-git clone https://github.com/luanascardua/crawler---Jusbrasil.git
+git clone https://github.com/luanascardua/crawler-consulta-processos.git
 ```
 
 ``` python
