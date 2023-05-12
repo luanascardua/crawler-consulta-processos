@@ -1,11 +1,11 @@
 from flask import Flask, jsonify, request
-from webcrawler import start_crawler
+from crawler import start_crawler
 
 
 app = Flask(__name__)
 
 @app.route('/processo', methods=['POST'])
-def receber_json_arquivo():
+def set_json():
     global numero
 
     content = request.get_json()

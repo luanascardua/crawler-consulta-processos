@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 
 class Esaj1Grau:
 
-    def __init__(self, driver):
+    def __init__(self):
 
         self.input_processo = By.ID, "nuProcessoAntigoFormatado"
         self.btn_consultar = By.ID, "botaoConsultarProcessos"
@@ -28,7 +28,7 @@ class Esaj1Grau:
 
 class Esaj2Grau:
 
-    def __init__(self, driver):
+    def __init__(self):
 
         self.input_processo = By.ID, "nuProcessoAntigoFormatado"
         self.btn_consultar = By.ID, "pbConsultar"
