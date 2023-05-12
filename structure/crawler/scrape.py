@@ -2,8 +2,7 @@
 from selenium.common.exceptions import JavascriptException, NoSuchElementException
 import time
 
-from crawler.webdriver import driver
-from utils.functions import (
+from structure.utils.functions import (
     format_html_string, 
     convert_to_float, 
     dict_header_data, 
@@ -13,7 +12,7 @@ from utils.functions import (
 )
 
 
-def search_process(n_process, esaj):
+def search_process(driver, n_process, esaj):
     driver.find_element(*esaj.radio_outros).click()
     input_processo = driver.find_element(*esaj.input_processo)
     input_processo.clear(); input_processo.send_keys(n_process)
@@ -30,7 +29,7 @@ def search_process(n_process, esaj):
             pass
 
 
-def get_data_header(esaj):
+def get_data_header(driver, esaj):
     classe = driver.find_element(*esaj.field_classe_processo).text
     assunto = driver.find_element(*esaj.field_assunto_processo).text
     foro = driver.find_element(*esaj.field_foro_processo).text
@@ -56,7 +55,7 @@ def get_data_header(esaj):
     return dict_header_data(classe, assunto, foro, vara, juiz, area, valor)
 
 
-def get_partes_processo(esaj):
+def get_partes_processo(driver, esaj):
     list_dict = []
     for key, value in zip(
         driver.find_elements(*esaj.table_partes_tipo),
@@ -68,7 +67,7 @@ def get_partes_processo(esaj):
     return list_dict
 
 
-def get_movimentacoes(esaj):
+def get_movimentacoes(driver, esaj):
     list_dict = []
     for data, descricao in zip(
         driver.find_elements(*esaj.table_movimentacoes_data),
